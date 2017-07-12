@@ -25,6 +25,8 @@
 		B68ABD2E1EEA0CCD0090A541 /* BlurringOverlayStyleManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68ABD2D1EEA09D10090A541 /* BlurringOverlayStyleManagerTest.swift */; };
 		B69B6D7C1E9CD5C000BE032D /* OverlayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69B6D7B1E9CD5C000BE032D /* OverlayManager.swift */; };
 		B6A102A91DFC8EFE009C73DF /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A102A81DFC8EFE009C73DF /* MaskView.swift */; };
+		B8AB897D1F15D45E0067BA9F /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB897C1F15D45E0067BA9F /* Anchor.swift */; };
+		B8AB897E1F15E14A0067BA9F /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB897C1F15D45E0067BA9F /* Anchor.swift */; };
 		C61458B31BBB01DE006EB4F2 /* CoachMarkArrowOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61458B21BBB01DE006EB4F2 /* CoachMarkArrowOrientation.swift */; };
 		C61A76BD1BDC16D700F131BF /* CoachMarkDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A76BC1BDC16D700F131BF /* CoachMarkDisplayManager.swift */; };
 		C62DBF4A1D53BE6300AFAAE2 /* CoachMarkInnerLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DBF491D53BE6300AFAAE2 /* CoachMarkInnerLayoutHelper.swift */; };
@@ -121,6 +123,7 @@
 		B68ABD2D1EEA09D10090A541 /* BlurringOverlayStyleManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurringOverlayStyleManagerTest.swift; sourceTree = "<group>"; };
 		B69B6D7B1E9CD5C000BE032D /* OverlayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayManager.swift; sourceTree = "<group>"; };
 		B6A102A81DFC8EFE009C73DF /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		B8AB897C1F15D45E0067BA9F /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		C61458B21BBB01DE006EB4F2 /* CoachMarkArrowOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMarkArrowOrientation.swift; sourceTree = "<group>"; };
 		C61A76BC1BDC16D700F131BF /* CoachMarkDisplayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMarkDisplayManager.swift; sourceTree = "<group>"; };
 		C62DBF491D53BE6300AFAAE2 /* CoachMarkInnerLayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachMarkInnerLayoutHelper.swift; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 				B65DDDC81EE2D9C2002618AF /* Enums */,
 				C6D4D0EB1D5A774F00F14FC5 /* CoachMarkBodyDefaultViewHelper.swift */,
 				C62DBF4F1D5499AB00AFAAE2 /* CoachMarkHelper.swift */,
+				B8AB897C1F15D45E0067BA9F /* Anchor.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -746,6 +750,7 @@
 				C6417E1F1D291A8A004D13EA /* CoachMarkBodyDefaultView.swift in Sources */,
 				B61E448F1EA8C57E00D82BA1 /* TranslucentOverlayStyleManager.swift in Sources */,
 				C6417E201D291A8A004D13EA /* CoachMarkSkipDefaultView.swift in Sources */,
+				B8AB897E1F15E14A0067BA9F /* Anchor.swift in Sources */,
 				C6417E211D291A8A004D13EA /* CoachMarkPosition.swift in Sources */,
 				C6417E221D291A8A004D13EA /* OverlayView.swift in Sources */,
 				C6417E231D291A8A004D13EA /* CoachMarkBodyHighlightArrowDelegate.swift in Sources */,
@@ -790,6 +795,7 @@
 				B6072E0E1EE1C39400758C22 /* InstructionsWindow.swift in Sources */,
 				C6D4D0EC1D5A774F00F14FC5 /* CoachMarkBodyDefaultViewHelper.swift in Sources */,
 				C6D365121D57E97600D2C6A2 /* FlowManager.swift in Sources */,
+				B8AB897D1F15D45E0067BA9F /* Anchor.swift in Sources */,
 				C64FB3491BB6DC3B0081E5B6 /* OverlayView.swift in Sources */,
 				B61E448B1EA8C4AA00D82BA1 /* BlurringOverlayStyleManager.swift in Sources */,
 				C64FB37E1BB828E50081E5B6 /* CoachMarkBodyHighlightArrowDelegate.swift in Sources */,
@@ -986,6 +992,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Sources/Instructions/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ephread.Instructions;
@@ -1006,6 +1013,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Sources/Instructions/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ephread.Instructions;
