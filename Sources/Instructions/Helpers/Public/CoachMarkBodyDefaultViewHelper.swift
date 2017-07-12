@@ -40,10 +40,19 @@ open class CoachMarkBodyDefaultViewHelper {
     func makeVerticalConstraints(for hint: UITextView) -> [NSLayoutConstraint] {
         guard let superview = hint.superview else { return [] }
 
-        return [
-            hint.topAnchor.constraint(equalTo: superview.topAnchor, constant: 5),
-            superview.bottomAnchor.constraint(equalTo: hint.bottomAnchor, constant: 5)
-        ]
+		if #available(iOS 9.0, *) {
+			return [
+				hint.topAnchor.constraint(equalTo: superview.topAnchor, constant: 5),
+				superview.bottomAnchor.constraint(equalTo: hint.bottomAnchor, constant: 5)
+			]
+		} else {
+			// Fallback on earlier versions
+			return [
+				hint.anchors.topAnchor
+					.constraintEqualToAnchor(anchor: superview.anchors.topAnchor, constant: 5),
+				superview.anchors.bottomAnchor.constraintEqualToAnchor(anchor: hint.anchors.bottomAnchor, constant: 5)
+			]
+		}
     }
 
     func configureBackground(_ background: UIView, addTo parent: UIView) {
@@ -68,8 +77,12 @@ open class CoachMarkBodyDefaultViewHelper {
     func configureSimpleHint(_ hint: UITextView, addTo parent: UIView) {
         configureHint(hint, addTo: parent)
 
-        hint.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 10).isActive = true
-        parent.trailingAnchor.constraint(equalTo: hint.trailingAnchor, constant: 10).isActive = true
+		if #available(iOS 9.0, *) {
+			hint.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 10).isActive = true
+			parent.trailingAnchor.constraint(equalTo: hint.trailingAnchor, constant: 10).isActive = true
+		} else {
+			// Fallback on earlier versions
+		}
     }
 
     func configureNext(_ next: UILabel, addTo parent: UIView) {
@@ -89,10 +102,18 @@ open class CoachMarkBodyDefaultViewHelper {
 
         parent.addSubview(separator)
 
-        separator.topAnchor.constraint(equalTo: parent.topAnchor,
-                                       constant: 15).isActive = true
-        parent.bottomAnchor.constraint(equalTo: separator.bottomAnchor,
-                                       constant: 15).isActive = true
+		if #available(iOS 9.0, *) {
+			separator.topAnchor.constraint(equalTo: parent.topAnchor,
+			                               constant: 15).isActive = true
+			parent.bottomAnchor.constraint(equalTo: separator.bottomAnchor,
+			                               constant: 15).isActive = true
+		} else {
+			// Fallback on earlier versions
+			separator.anchors.topAnchor
+				.constraintEqualToAnchor(anchor: parent.anchors.topAnchor, constant: 15).isActive = true
+			parent.anchors.bottomAnchor
+				.constraintEqualToAnchor(anchor: separator.anchors.bottomAnchor, constant: 15).isActive = true
+		}
     }
 
     private func configureTextPropertiesOfHint(_ hint: UITextView) {

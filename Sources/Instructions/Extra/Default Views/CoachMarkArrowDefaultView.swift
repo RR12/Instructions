@@ -51,8 +51,21 @@ public class CoachMarkArrowDefaultView: UIImageView, CoachMarkArrowView {
 // MARK: - Private Inner Setup
 private extension CoachMarkArrowDefaultView {
     func initializeConstraints() {
+		
+		guard let image = self.image else {
+			return
+		}
+		
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: self.image!.size.width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: self.image!.size.height).isActive = true
+		if #available(iOS 9.0, *) {
+			self.widthAnchor.constraint(equalToConstant: image.size.width).isActive = true
+			self.heightAnchor.constraint(equalToConstant: image.size.height).isActive = true
+		} else {
+			// Fallback on earlier versions
+			self.anchors.widthAnchor
+				.constraintEqualToConstant(c: image.size.width).isActive = true
+			self.anchors.heightAnchor
+				.constraintEqualToConstant(c: image.size.height).isActive = true
+		}
     }
 }

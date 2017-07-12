@@ -177,18 +177,38 @@ class CoachMarkDisplayManager {
                 let constant = -(parentView.frame.size.height -
                                  cutoutPath.bounds.origin.y + offset)
 
-                let coachMarkViewConstraint =
-                    coachMarkView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor,
-                                                          constant: constant)
+				// Fallback on earlier versions on default declaration
+				var coachMarkViewConstraint: NSLayoutConstraint
+				
+				if #available(iOS 9.0, *) {
+					coachMarkViewConstraint =
+						coachMarkView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor,
+						                                      constant: constant)
+				} else {
+					coachMarkViewConstraint =
+						coachMarkView.anchors.bottomAnchor
+							.constraintEqualToAnchor(anchor: parentView.anchors.bottomAnchor,
+							                         constant: constant)
+				}
 
                 parentView.addConstraint(coachMarkViewConstraint)
             } else {
                 let constant = (cutoutPath.bounds.origin.y +
                                 cutoutPath.bounds.size.height) + offset
 
-                let coachMarkViewConstraint =
-                    coachMarkView.topAnchor.constraint(equalTo: parentView.topAnchor,
-                                                       constant: constant)
+				// Fallback on earlier versions on default declaration
+				var coachMarkViewConstraint: NSLayoutConstraint
+				
+				if #available(iOS 9.0, *) {
+					coachMarkViewConstraint =
+						coachMarkView.topAnchor.constraint(equalTo: parentView.topAnchor,
+						                                   constant: constant)
+				} else {
+					coachMarkViewConstraint =
+						coachMarkView.anchors.topAnchor
+							.constraintEqualToAnchor(anchor: parentView.anchors.topAnchor,
+							                         constant: constant)
+				}
 
                 parentView.addConstraint(coachMarkViewConstraint)
             }

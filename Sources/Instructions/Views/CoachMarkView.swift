@@ -148,8 +148,14 @@ class CoachMarkView: UIView {
                 withProperties: (orientation: arrowOrientation, verticalArrowOffset: arrowOffset)
             ))
         } else {
-            self.addConstraint(bodyUIView.topAnchor.constraint(equalTo: topAnchor))
-            self.addConstraint(bodyUIView.bottomAnchor.constraint(equalTo: bottomAnchor))
+			if #available(iOS 9.0, *) {
+				self.addConstraint(bodyUIView.topAnchor.constraint(equalTo: topAnchor))
+				self.addConstraint(bodyUIView.bottomAnchor.constraint(equalTo: bottomAnchor))
+			} else {
+				// Fallback on earlier versions
+				self.addConstraint(bodyUIView.anchors.topAnchor.constraintEqualToAnchor(anchor: anchors.topAnchor))
+				self.addConstraint(bodyUIView.anchors.bottomAnchor.constraintEqualToAnchor(anchor: anchors.bottomAnchor))
+			}
         }
     }
 }

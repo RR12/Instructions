@@ -57,13 +57,26 @@ class CoachMarkInnerLayoutHelper {
 
         let offset = adaptedOffset(for: .top, offset: verticalArrowOffset)
 
-        return [
-            coachMarkViews.arrowView.bottomAnchor
-                          .constraint(equalTo: coachMarkViews.bodyView.topAnchor,
-                                      constant: offset),
-            parentView.topAnchor.constraint(equalTo: coachMarkViews.arrowView.topAnchor),
-            coachMarkViews.bodyView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
-        ]
+		if #available(iOS 9.0, *) {
+			return [
+				coachMarkViews.arrowView.bottomAnchor
+					.constraint(equalTo: coachMarkViews.bodyView.topAnchor,
+					            constant: offset),
+				parentView.topAnchor.constraint(equalTo: coachMarkViews.arrowView.topAnchor),
+				coachMarkViews.bodyView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+			]
+		} else {
+			// Fallback on earlier versions
+			return [
+				coachMarkViews.arrowView.anchors.bottomAnchor
+					.constraintEqualToAnchor(anchor: coachMarkViews.bodyView.anchors.topAnchor,
+					                         constant: offset),
+				parentView.anchors.topAnchor
+					.constraintEqualToAnchor(anchor: coachMarkViews.arrowView.anchors.topAnchor),
+				coachMarkViews.bodyView.anchors.bottomAnchor
+					.constraintEqualToAnchor(anchor: parentView.anchors.bottomAnchor)
+			]
+		}
     }
 
     private func bottomOrientationConstraints(for coachMarkViews: CoachMarkViews,
@@ -71,13 +84,26 @@ class CoachMarkInnerLayoutHelper {
     -> [NSLayoutConstraint] {
             let offset = adaptedOffset(for: .bottom, offset: verticalArrowOffset)
 
-            return [
-                coachMarkViews.arrowView.topAnchor
-                    .constraint(equalTo: coachMarkViews.bodyView.bottomAnchor,
-                                constant: offset),
-                parentView.bottomAnchor.constraint(equalTo: coachMarkViews.arrowView.bottomAnchor),
-                coachMarkViews.bodyView.topAnchor.constraint(equalTo: parentView.topAnchor)
-            ]
+		if #available(iOS 9.0, *) {
+			return [
+				coachMarkViews.arrowView.topAnchor
+					.constraint(equalTo: coachMarkViews.bodyView.bottomAnchor,
+					            constant: offset),
+				parentView.bottomAnchor.constraint(equalTo: coachMarkViews.arrowView.bottomAnchor),
+				coachMarkViews.bodyView.topAnchor.constraint(equalTo: parentView.topAnchor)
+			]
+		} else {
+			// Fallback on earlier versions
+			return [
+				coachMarkViews.arrowView.anchors.topAnchor
+					.constraintEqualToAnchor(anchor: coachMarkViews.bodyView.anchors.bottomAnchor,
+					                         constant: offset),
+				parentView.anchors.bottomAnchor
+					.constraintEqualToAnchor(anchor: coachMarkViews.arrowView.anchors.bottomAnchor),
+				coachMarkViews.bodyView.anchors.topAnchor
+					.constraintEqualToAnchor(anchor: parentView.anchors.topAnchor)
+			]
+		}
     }
 
     private func adaptedOffset(for arrowPosition: ArrowPosition, offset: CGFloat) -> CGFloat {

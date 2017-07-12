@@ -107,8 +107,17 @@ class SkipViewDisplayManager {
 
         var constraints = [NSLayoutConstraint]()
 
-        constraints.append(skipView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor,
-                                                              constant: -10))
+		if #available(iOS 9.0, *) {
+			constraints.append(skipView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor,
+			                                                      constant: -10))
+		} else {
+			// Fallback on earlier versions
+			constraints.append(
+				skipView.anchors.trailingAnchor
+					.constraintEqualToAnchor(anchor: parentView.anchors.trailingAnchor,
+					                         constant: -10)
+			)
+		}
 
         var topConstant: CGFloat = 0.0
 
@@ -120,8 +129,16 @@ class SkipViewDisplayManager {
 
         topConstant += 2
 
-        constraints.append(skipView.topAnchor.constraint(equalTo: parentView.topAnchor,
-                                                         constant: topConstant))
+		if #available(iOS 9.0, *) {
+			constraints.append(skipView.topAnchor.constraint(equalTo: parentView.topAnchor,
+			                                                 constant: topConstant))
+		} else {
+			// Fallback on earlier versions
+			constraints.append(
+				skipView.anchors.topAnchor
+					.constraintEqualToAnchor(anchor: parentView.anchors.topAnchor,
+					                         constant: topConstant))
+		}
 
         return constraints
     }

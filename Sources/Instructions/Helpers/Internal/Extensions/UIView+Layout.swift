@@ -42,10 +42,18 @@ internal extension UIView {
             return []
         }
 
-        return [
-            topAnchor.constraint(equalTo: superview.topAnchor),
-            bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-        ]
+		if #available(iOS 9.0, *) {
+			return [
+				topAnchor.constraint(equalTo: superview.topAnchor),
+				bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+			]
+		} else {
+			// Fallback on earlier versions
+			return [
+				anchors.topAnchor.constraintEqualToAnchor(anchor: superview.anchors.topAnchor),
+				anchors.bottomAnchor.constraintEqualToAnchor(anchor: superview.anchors.bottomAnchor)
+			]
+		}
     }
 
     func makeConstraintToFillSuperviewHorizontally() -> [NSLayoutConstraint] {
@@ -54,9 +62,17 @@ internal extension UIView {
             return []
         }
 
-        return [
-            leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-        ]
+		if #available(iOS 9.0, *) {
+			return [
+				leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+				trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+			]
+		} else {
+			// Fallback on earlier versions
+			return [
+				anchors.leadingAnchor.constraintEqualToAnchor(anchor: superview.anchors.leadingAnchor),
+				anchors.trailingAnchor.constraintEqualToAnchor(anchor: superview.anchors.trailingAnchor)
+			]
+		}
     }
 }
