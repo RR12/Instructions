@@ -152,5 +152,10 @@ class ConstraintsMockedDataSource: MockedDataSource {
 }
 
 private func makeConstraint(skipView: UIView, inParent parentView: UIView) -> NSLayoutConstraint {
-    return skipView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+
+	if #available(iOS 9.0, *) {
+		return skipView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
+	} else {
+		return skipView.anchors.bottomAnchor.constraintEqualToAnchor(anchor: parentView.anchors.bottomAnchor)
+	}
 }

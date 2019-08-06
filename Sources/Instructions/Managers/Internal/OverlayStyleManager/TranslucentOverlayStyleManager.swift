@@ -108,7 +108,7 @@ class TranslucentOverlayStyleManager: OverlayStyleManager {
         animation.fromValue = show ? 1.0 : 0.0
         animation.toValue = show ? 0.0 : 1.0
         animation.duration = duration
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.isRemovedOnCompletion = true
 
         CATransaction.setCompletionBlock {
@@ -144,7 +144,7 @@ class TranslucentOverlayStyleManager: OverlayStyleManager {
     private func configureCutoutMask(usingCutoutPath cutoutPath: UIBezierPath) {
         cutoutMaskLayer = CAShapeLayer()
         cutoutMaskLayer.name = "cutoutMaskLayer"
-        cutoutMaskLayer.fillRule = kCAFillRuleEvenOdd
+        cutoutMaskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         cutoutMaskLayer.frame = overlayLayer.frame
 
         let cutoutMaskLayerPath = UIBezierPath()
@@ -157,7 +157,7 @@ class TranslucentOverlayStyleManager: OverlayStyleManager {
     private func configureFullMask() {
         fullMaskLayer = CAShapeLayer()
         fullMaskLayer.name = "fullMaskLayer"
-        fullMaskLayer.fillRule = kCAFillRuleEvenOdd
+        fullMaskLayer.fillRule = CAShapeLayerFillRule.evenOdd
         fullMaskLayer.frame = overlayLayer.frame
         fullMaskLayer.opacity = 1.0
 

@@ -73,9 +73,9 @@ The -constraint* methods are available in multiple flavors to support use of dif
 public class LayoutAnchor {
 	
 	internal var item:View
-	internal var attribute:NSLayoutAttribute
+	internal var attribute:NSLayoutConstraint.Attribute
 	
-	internal init(item:View, attribute:NSLayoutAttribute) {
+	internal init(item:View, attribute:NSLayoutConstraint.Attribute) {
 		self.item = item
 		self.attribute = attribute
 	}

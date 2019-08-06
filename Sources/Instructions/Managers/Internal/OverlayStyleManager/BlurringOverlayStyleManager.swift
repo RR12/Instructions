@@ -79,7 +79,7 @@ class BlurringOverlayStyleManager: OverlayStyleManager {
         path.usesEvenOddFillRule = true
 
         view.shapeLayer.path = path.cgPath
-        view.shapeLayer.fillRule = kCAFillRuleEvenOdd
+        view.shapeLayer.fillRule = CAShapeLayerFillRule.evenOdd
 
         return view
     }
@@ -88,10 +88,10 @@ class BlurringOverlayStyleManager: OverlayStyleManager {
         return UIBlurEffect(style: style)
     }
 
-    private let style: UIBlurEffectStyle
+    private let style: UIBlurEffect.Style
 
     // MARK: Initialization
-    init(style: UIBlurEffectStyle) {
+    init(style: UIBlurEffect.Style) {
         self.style = style
     }
 
