@@ -303,14 +303,14 @@ extension CoachMarksViewController {
             return
         }
 
-        parentViewController.addChildViewController(self)
+		parentViewController.addChild(self)
         parentViewController.view.addSubview(self.view)
 
         registerForSystemEventChanges()
         addRootView(to: window)
         addOverlayView()
 
-        self.didMove(toParentViewController: parentViewController)
+		self.didMove(toParent: parentViewController)
 
         window.layoutIfNeeded()
     }
@@ -318,9 +318,9 @@ extension CoachMarksViewController {
     /// Detach the controller from its parent view controller.
     func detachFromWindow() {
         self.instructionsRootView.removeFromSuperview()
-        self.willMove(toParentViewController: nil)
+		self.willMove(toParent: nil)
         self.view.removeFromSuperview()
-        self.removeFromParentViewController()
+		self.removeFromParent()
         deregisterFromSystemEventChanges()
     }
 #else
