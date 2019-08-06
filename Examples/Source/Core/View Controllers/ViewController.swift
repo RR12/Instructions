@@ -33,7 +33,7 @@ class ViewController: UIViewController, CoachMarksControllerDataSource {
         super.viewDidLoad()
 
         self.coachMarksController.dataSource = self
-        coachMarksController.overlay.windowLevel = UIWindowLevelStatusBar + 1
+		coachMarksController.overlay.windowLevel = UIWindow.Level.statusBar + 1
 
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle("Skip", for: .normal)

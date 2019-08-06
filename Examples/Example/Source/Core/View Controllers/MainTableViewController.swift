@@ -13,7 +13,7 @@ class MainTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "WindowLevel" {
             if let controller = segue.destination as? DefaultViewController {
-                controller.coachMarksController.overlay.windowLevel = UIWindowLevelStatusBar + 1
+				controller.coachMarksController.overlay.windowLevel = UIWindow.Level.statusBar + 1
             }
         }
     }
